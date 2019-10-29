@@ -40,7 +40,7 @@ require_once('conn.php');
 				<div class="form-group form-horizontal">
 				  <label for="staffId" class="col-sm-6 control-label"><font face="楷体" size=4>学号：</font></label> 
 				    <div class="col-sm-6">
-				      <input type="text" id="xh" name="xh" class="form-control" placeholder="必填"  value="<?php echo $sql_arr['xh']?>" />
+				      <input type="text" id="xh" name="xh" class="form-control" placeholder=""  disabled="disabled" value="<?php echo $sql_arr['xh']?>" />
 				    </div>
 			  	</div>
 			</div>
