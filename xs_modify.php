@@ -7,28 +7,35 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script type="text/javascript" src="jquery-1.12.1.min.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function(){
+	 $(document).ready(function(){
 		//当单击登录按钮时触发的事件
 		$(".btn").click(function(){
-			var mid = document.getElementById("mid").value;
+                  
+			var mid =$("#mid").val();
+
+			//alert(mid);
+			//var mid = document.getElementById("#mid").value;
 			if (mid == ""){
 				alert("请输入要修改的学号。");
 				$("#mid").focus();
 				return false;
 			}else{
-				$.post("xs_modify_check.php",{mid:mid},function(data){
-					if($.trim(data)=='yes'){
-						window.location.href='modify.php';
-						location.reload();
-					}else{
+				 
+				$.post("xs_update.php",{mid:mid},function(data){
+					//测试是否获取到mid
+                    //alert(mid);
+					if($.trim(data)=="ERROR"){
 						alert('学号错误，修改失败！');
 						location.reload();
+					}else{
+						alert('ok！');
 					}
-				},"text");
-			}
+				},"json"); 
+		}
 				
 		});
-	});
+	}); 
+
 	</script>
 </head>
 
@@ -40,10 +47,16 @@
 			</div>
 				
 			<div width="30%" align="center">
-				<form  align=left>
-					<input type="text" id="mid" class="form-control" placeholder="输入要修改的学号">
-					<button type="button" class="btn btn-danger" onclick="button_delete()">确认修改(delete)</button>
+			
+				<form  align=left action="xs_update.php" method="p" post="post">
+				
+					<input type="text" id="mid" name="mid" class="form-control" placeholder="输入要修改的学号">
+					
+				 <!--<button type="submit" class="btn btn-danger" value="确认修改">确认修改</button>--!>
+					<input type="submit" class="btn btn-danger" value="确认修改"  />
 				</form>
+				
+				
 			</div>
 		</div>
 		
@@ -76,6 +89,7 @@
 				<th>所属专业</th>
 				<th>所属班级</th>
 				<th>学籍状态</th>
+			
 			</tr>
             <?php
                 
@@ -103,11 +117,13 @@
                echo  $row["lxdh"] . "</td><td>";
                echo  $row["jtzz"] . "</td><td>";
                echo  $row["rxnf"] . "</td><td>";
+               
                echo  mysql_fetch_array(mysql_query( "select xymc from xyxxb where xybm='".$row["xybm"]."'" ))["xymc"] . "</td><td>";
                echo  mysql_fetch_array(mysql_query( "select xbmc from xbxxb where xbbm='".$row["xbbm"]."'" ))["xbmc"] . "</td><td>";
                echo  mysql_fetch_array(mysql_query( "select zymc from zyxxb where zybm='".$row["zybm"]."'" ))["zymc"] . "</td><td>";
                echo  mysql_fetch_array(mysql_query( "select bjmc from bjxxb where bjbm='".$row["bjbm"]."'" ))["bjmc"] . "</td><td>";
                echo  $row["xjzt"];
+             
                }
                }else{
                 echo "no connect.";
