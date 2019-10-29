@@ -14,16 +14,16 @@
 			var passwd = document.getElementById("pwd").value;
 			var role = document.getElementById("role").value;
 			var pattern = new RegExp("[~'!@#$%^&*()-+_=:]");
-			if(user==""){
-				alert("请输入账号！");
+			if(user=="" || user.length>10){
+				alert("请输入账号！账号长度不超过10！");
 				$("#name").focus();
 				return false;
 			}else if(pattern.test(user)){
 				alert("温馨提示：用户名中含有非法字符，请重新输入！");
 	            $("#name").focus();
 	            return false;
-			}else if(passwd==""){
-				alert('请输入密码!');
+			}else if(passwd=="" || passwd.length>10){
+				alert('请输入密码！密码长度不超过10！');
 				$("#pwd").focus();
 				return false;
 			}else if(pattern.test(passwd)){
