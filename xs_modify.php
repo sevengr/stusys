@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +16,7 @@
 			//alert(mid);
 			//var mid = document.getElementById("#mid").value;
 			if (mid == ""){
-				alert("请输入要修改的学号。");
+				alert("请输入要修改的学生的学号。");
 				$("#mid").focus();
 				return false;
 			}else{
@@ -50,7 +50,7 @@
 			
 				<form  align=left action="xs_update.php" method="p" post="post">
 				
-					<input type="text" id="mid" name="mid" class="form-control" placeholder="输入要修改的学号">
+					<input type="text" id="mid" name="mid" class="form-control" placeholder="输入要修改的学生的学号">
 					
 				 <!--<button type="submit" class="btn btn-danger" value="确认修改">确认修改</button>--!>
 					<input type="submit" class="btn btn-danger" value="确认修改"  />
