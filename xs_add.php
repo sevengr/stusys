@@ -35,6 +35,18 @@
 				alert('请输入姓名!');
 				$("#xm").focus();
 				return false;
+			}else if(xb=="" || !(xb=='男'||xb=='女')){
+				alert('请输入性别！性别格式不对，只能为男或女');
+				$("#xb").focus();
+				return false;
+			}else if(sheng==""){
+				alert('请输入 省!');
+				$("#sheng").focus();
+				return false;
+			}else if(shi==""){
+				alert('请输入 市!');
+				$("#shi").focus();
+				return false;
 			}else if(rxnf==""){
 				alert('请输入 入学年份!');
 				$("#rxnf").focus();
@@ -193,7 +205,7 @@
 				<div class="form-group form-horizontal">
 				    <label for="staffId" class="col-sm-6 control-label"><font face="楷体" size=4>省：</font></label>
 				    <div class="col-sm-6">
-				      <input type="text" id="sheng" class="form-control" placeholder="">
+				      <input type="text" id="sheng" class="form-control"  placeholder="必填">
 				    </div>
 			  	</div>
 			</div>
@@ -212,7 +224,7 @@
 				<div class="form-group form-horizontal">
 				    <label for="staffId" class="col-sm-6 control-label"><font face="楷体" size=4>市：</font></label>
 				    <div class="col-sm-6">
-				      <input type="text" id="shi" class="form-control" placeholder="">
+				      <input type="text" id="shi" class="form-control"  placeholder="必填">
 				    </div>
 			  	</div>
 			</div>
