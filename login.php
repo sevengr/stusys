@@ -25,15 +25,15 @@
 			var pattern = new RegExp("[~'!@#$%^&*()-+_=:?？]");
 			//对账号和密码进行非空判断  
 			if(user=="" || user.length>10){
-				alert("请输入账号！账号长度不超过10！");
+				alert("请输入账号！");
 				$("#user").focus();
 				return false;
 			}else if(pattern.test(user)){
 				alert("温馨提示：用户名中含有非法字符，请重新输入！");
 	            $("#user").focus();
 	            return false;
-			}else if(passwd=="" || passwd.length>10){
-				alert('请输入密码！密码长度不超过10！');
+			}else if(passwd=="" || passwd.length>10 || passwd.length<6){
+				alert('请输入密码！');
 				$("#passwd").focus();
 				return false;
 			}else if(pattern.test(passwd)){
