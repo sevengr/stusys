@@ -1,77 +1,66 @@
 <?php
-require_once ('session.php');
+session_start();
+header("Content-type:text/html; charset=utf-8");
 require_once ('conn.php');
-mysql_query("set names 'utf8'");
+$xh = $_POST['xh'];
+$xm = $_POST['xm'];
+$xb = $_POST['xb'];
+$csrq = $_POST['csrq'];
+$zzmm = $_POST['zzmm'];
+$sheng = $_POST['sheng'];
+$shi = $_POST['shi'];
+$xian = $_POST['xian'];
+$dzyx = $_POST['dzyx'];
+$lxdh = $_POST['lxdh'];
+$jtzz = $_POST['jtzz'];
+$rxnf = $_POST['rxnf'];
+$ssxy = $_POST['xybm'];
+$ssxb = $_POST['xbbm'];
+$sszy = $_POST['zybm'];
+$ssbj = $_POST['bjbm'];
+$xjzt = $_POST['xjzt'];
 
-$admin_xm = $_POST['xm'];
-$admin_xb = $_POST['xb'];
-$admin_csrq = $_POST['csrq'];
-$admin_zzmm = $_POST['zzmm'];
-$admin_sheng = $_POST['sheng'];
-$admin_shi = $_POST['shi'];
-$admin_xian = $_POST['xian'];
-$admin_dzyx = $_POST['dzyx'];
-$admin_lxdh = $_POST['lxdh'];
-$admin_jtzz = $_POST['jtzz'];
-$admin_rxnf = $_POST['rxnf'];
-$admin_xybm = $_POST['xybm'];
-$admin_xbbm = $_POST['xbbm'];
-$admin_zybm = $_POST['zybm'];
-$admin_bjbm = $_POST['bjbm'];
-$admin_xjzt = $_POST['xjzt'];
+$sql = "update xsxxb set xm='".$xh."',xb='".$xb."',csrq='".$csrq."',zzmm='".$zzmm."',sheng='".$sheng."',shi='".$shi."',xian='".$xian."',dzyx='".$dzyx."',lxdh='".$lxdh."',jtzz='".$jtzz."',rxnf='".$rxnf."',xybm='".$ssxy."',xbbm='".$ssxb."',zybm='".$sszy."',bjbm='".$ssbj."',xjzt='".$xjzt."' where xh='".$xh."'";
+$sqlxy ="select * from xyxxb where xybm='".$ssxy."'";
+$sqlxb ="select * from xbxxb where xbbm='".$ssxb."'";
+$sqlzy ="select * from zyxxb where zybm='".$sszy."'";
+$sqlbj ="select * from bjxxb where bjbm='".$ssbj."'";
 
-if ($admin_xb=='' || !($admin_xb=='男'||$admin_xb=='女')){
-	echo "性别格式错误！只能为男或女！";
-	return;
+$resultxy =mysql_query($sqlxy);
+$numxy =mysql_num_rows($resultxy);
+
+$resultxb =mysql_query($sqlxb);
+$numxb =mysql_num_rows($resultxb);
+
+$resultzy =mysql_query($sqlzy);
+$numzy =mysql_num_rows($resultzy);
+
+$resultbj =mysql_query($sqlbj);
+$numbj =mysql_num_rows($resultbj);
+
+if($numxy>0){
+	if($numxb>0){
+		if($numzy>0){
+			if($numbj>0){
+				$result = mysql_query($sql);
+				if ($result) {
+					echo "yes";
+				} else {
+					echo "no";
+				}
+			}else{
+				echo "nobj";
+			}
+		}else{
+			echo "nozy";
+		}
+	}else{
+		echo "noxb";
+	}
+}else{
+	echo "noxy";
 }
 
-if ($admin_xm==''){
-	echo "姓名不能为空！";
-	return;
-}
 
-if ($admin_sheng==''){
-	echo "省不能为空！";
-	return;
-}
-
-if ($admin_shi==''){
-	echo "市不能为空！";
-	return;
-}
-
-if ($admin_xybm==''){
-	echo "学院编码不能为空！";
-	return;
-}
-
-if ($admin_xbbm==''){
-	echo "系部编码不能为空！";
-	return;
-}
-
-if ($admin_zybm==''){
-	echo "专业编码不能为空！";
-	return;
-}
-
-if ($admin_bjbm==''){
-	echo "班级编码不能为空！";
-	return;
-}
-
-$res = mysql_query("update xsxxb set xm='$admin_xm',xb='$admin_xb',csrq='$admin_csrq',zzmm='$admin_zzmm',sheng='$admin_sheng',shi='$admin_shi',xian='$admin_xian',dzyx='$admin_dzyx',lxdh='$admin_lxdh',jtzz='$admin_jtzz',rxnf='$admin_rxnf',xybm='$admin_xybm',xbbm='$admin_xbbm',zybm='$admin_zybm',bjbm='$admin_bjbm',xjzt='$admin_xjzt' where xh='$admin_xh'");
-
-if ($res != null) {
-    
-   
-    $url="xs_modify.php";
-    header("refresh:1;$url");  
-} else {
-    return;
-}
-
-// 将数组$arr转换成json格式后输出
-// echo json_encode($arr);
 mysql_close($conn);
 ?>
