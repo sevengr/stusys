@@ -20,7 +20,7 @@ $sszy = $_POST['zybm'];
 $ssbj = $_POST['bjbm'];
 $xjzt = $_POST['xjzt'];
 
-$sql = "update xsxxb set xm='".$xh."',xb='".$xb."',csrq='".$csrq."',zzmm='".$zzmm."',sheng='".$sheng."',shi='".$shi."',xian='".$xian."',dzyx='".$dzyx."',lxdh='".$lxdh."',jtzz='".$jtzz."',rxnf='".$rxnf."',xybm='".$ssxy."',xbbm='".$ssxb."',zybm='".$sszy."',bjbm='".$ssbj."',xjzt='".$xjzt."' where xh='".$xh."'";
+$sql = "update xsxxb set xm='".$xm."',xb='".$xb."',csrq='".$csrq."',zzmm='".$zzmm."',sheng='".$sheng."',shi='".$shi."',xian='".$xian."',dzyx='".$dzyx."',lxdh='".$lxdh."',jtzz='".$jtzz."',rxnf='".$rxnf."',xybm='".$ssxy."',xbbm='".$ssxb."',zybm='".$sszy."',bjbm='".$ssbj."',xjzt='".$xjzt."' where xh='".$xh."'";
 $sqlxy ="select * from xyxxb where xybm='".$ssxy."'";
 $sqlxb ="select * from xbxxb where xbbm='".$ssxb."'";
 $sqlzy ="select * from zyxxb where zybm='".$sszy."'";
