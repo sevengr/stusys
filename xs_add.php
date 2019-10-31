@@ -27,7 +27,8 @@
 			var zybm = document.getElementById("zybm").value;
 			var bjbm = document.getElementById("bjbm").value;
 			var xjzt = document.getElementById("xjzt").value;
-			if(xh==""){
+			var pattern = new RegExp("[jJ][sS][0-9]{8}");
+			if(xh=="" || !pattern.test(xh)){
 				alert("请输入学号！");
 				$("#xh").focus();
 				return false;
@@ -97,7 +98,7 @@
 </head>
 
 <body>
-<form action="insertadminLogin.html" name="datas" style="background-color:#81D4FA">
+<form name="datas" style="background-color:#81D4FA">
 	<font color="red" size="5">您正在添加学生信息！</font>
 	
 	<!-- 学号 -->
